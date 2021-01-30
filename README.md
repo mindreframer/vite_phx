@@ -1,5 +1,7 @@
 # Vite
 
+[![Build Status](https://github.com/mindreframer/vite_phx/workflows/CI/badge.svg)](https://github.com/mindreframer/vite_phx/actions?query=workflow%3A%22CI%22)
+
 Vite helps you to integrate [Vite.js](https://vitejs.dev) with Phoenix.
 
 
