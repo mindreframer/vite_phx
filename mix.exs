@@ -20,9 +20,9 @@ defmodule Vite.MixProject do
   defp package do
     [
       maintainers: ["Roman Heinrich"],
-      description: "vite_phx helps to integrate [Vite.js](vitejs.dev) into our Phoenix app",
+      description: "vite_phx helps to integrate Vite.js into your Phoenix app",
       licenses: ["MIT"],
-      links: %{github: "https://github.com/mindreframer/vite_phx"},
+      links: %{Github: "https://github.com/mindreframer/vite_phx"},
       files: ~w(lib CHANGELOG.md LICENSE.md mix.exs README.md .formatter.exs)
     ]
   end
@@ -41,21 +41,24 @@ defmodule Vite.MixProject do
       {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
 
       # Docs dependencies (some for cross references)
-      {:ex_doc, "~> 0.22", only: :docs}
+      {:ex_doc, "~> 0.22", only: :docs, runtime: false}
     ]
   end
 
   def docs() do
     [
       source_ref: "v#{@version}",
-      # main: "index",
-      # logo: "logo.png",
       extra_section: "GUIDES",
-      # assets: "guides/assets",
-      formatters: ["html", "epub"]
-      # groups_for_modules: groups_for_modules(),
-      # extras: extras(),
-      # groups_for_extras: groups_for_extras()
+      formatters: ["html", "epub"],
+      extras: extras()
+    ]
+  end
+
+  def extras do
+    [
+      "guides/introduction.md",
+      "guides/setup.md",
+      "guides/faq.md"
     ]
   end
 end
