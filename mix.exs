@@ -4,7 +4,6 @@ defmodule Vite.MixProject do
   @version "0.1.0"
   @elixir_requirement "~> 1.9"
 
-
   def project do
     [
       app: :vite_phx,
@@ -14,7 +13,7 @@ defmodule Vite.MixProject do
       preferred_cli_env: [docs: :docs],
       deps: deps(),
       docs: docs(),
-      package: package(),
+      package: package()
     ]
   end
 
@@ -23,8 +22,7 @@ defmodule Vite.MixProject do
       maintainers: ["Roman Heinrich"],
       licenses: ["MIT"],
       links: %{github: "https://github.com/mindreframer/vite_phx"},
-      files:
-        ~w(lib priv CHANGELOG.md LICENSE.md mix.exs README.md .formatter.exs)
+      files: ~w(lib priv CHANGELOG.md LICENSE.md mix.exs README.md .formatter.exs)
     ]
   end
 
@@ -42,7 +40,7 @@ defmodule Vite.MixProject do
       {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
 
       # Docs dependencies (some for cross references)
-      {:ex_doc, "~> 0.22", only: :docs},
+      {:ex_doc, "~> 0.22", only: :docs}
     ]
   end
 
@@ -53,7 +51,7 @@ defmodule Vite.MixProject do
       # logo: "logo.png",
       extra_section: "GUIDES",
       # assets: "guides/assets",
-      formatters: ["html", "epub"],
+      formatters: ["html", "epub"]
       # groups_for_modules: groups_for_modules(),
       # extras: extras(),
       # groups_for_extras: groups_for_extras()
