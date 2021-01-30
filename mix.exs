@@ -37,12 +37,26 @@ defmodule Vite.MixProject do
 
   defp deps do
     [
-      {:phoenix, ">= 0.0.0", only: [:dev, :test]},
-      {:jason, ">= 0.0.0", only: [:dev, :test]},
+      {:phoenix, ">= 0.0.0"},
+      {:jason, ">= 0.0.0", optional: true},
       {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
 
       # Docs dependencies (some for cross references)
       {:ex_doc, "~> 0.22", only: :docs},
+    ]
+  end
+
+  def docs() do
+    [
+      source_ref: "v#{@version}",
+      # main: "index",
+      # logo: "logo.png",
+      extra_section: "GUIDES",
+      # assets: "guides/assets",
+      formatters: ["html", "epub"],
+      # groups_for_modules: groups_for_modules(),
+      # extras: extras(),
+      # groups_for_extras: groups_for_extras()
     ]
   end
 end
