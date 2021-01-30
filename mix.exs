@@ -3,7 +3,7 @@ defmodule Vite.MixProject do
 
   def project do
     [
-      app: :vite,
+      app: :vite_phx,
       version: "0.1.0",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
@@ -13,7 +13,8 @@ defmodule Vite.MixProject do
 
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: [:logger],
+      mod: {Vite.Application, []}
     ]
   end
 

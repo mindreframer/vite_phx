@@ -8,12 +8,11 @@ Vite helps you to integrate [Vite.js](https://vitejs.dev) with Phoenix.
 ```elixir
 # in config/config.exs
 
-config :vite,
+config :vite_phx,
   main_file: "src/main.tsx",
-  endpoint: MyAppWeb.Endpoint,
-  environment: Mix.env(),
-  json_library: Jason,
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  endpoint: MyAppWeb.Endpoint, # required get the :cache_static_manifest config
+  environment: Mix.env(), # to tell prod and dev env appart
+  cache_static_manifest: "priv/static/cache_manifest.json" # optional
 ```
 
 ## Installation
@@ -24,7 +23,7 @@ by adding `vite` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:vite, "~> 0.1.0"}
+    {:vite_phx, "~> 0.1.0"}
   ]
 end
 ```
