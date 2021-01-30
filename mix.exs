@@ -20,9 +20,10 @@ defmodule Vite.MixProject do
   defp package do
     [
       maintainers: ["Roman Heinrich"],
+      description: "vite_phx helps to integrate [Vite.js](vitejs.dev) into our Phoenix app",
       licenses: ["MIT"],
       links: %{github: "https://github.com/mindreframer/vite_phx"},
-      files: ~w(lib priv CHANGELOG.md LICENSE.md mix.exs README.md .formatter.exs)
+      files: ~w(lib CHANGELOG.md LICENSE.md mix.exs README.md .formatter.exs)
     ]
   end
 
