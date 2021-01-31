@@ -14,6 +14,9 @@ defmodule Vite.Manifest do
     PhxManifestReader.read()
   end
 
+  def entries() do
+  end
+
   @spec get_file(binary()) :: binary()
   def get_file(file) do
     read() |> get_in([file, "file"]) |> raise_missing(file) |> prepend_slash()
@@ -39,7 +42,7 @@ defmodule Vite.Manifest do
     "/" <> result
   end
 
-  @spec raise_missing(binary()|nil, binary()) :: binary()
+  @spec raise_missing(binary() | nil, binary()) :: binary()
   defp raise_missing(check, file) do
     if is_nil(check) do
       raise("Could not find an entry for #{file} in the manifest!")
