@@ -23,6 +23,14 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# Configure Vite
+config :vite_phx,
+  main_file: "src/main.tsx",
+  endpoint: DemoWeb.Endpoint, # required get the :cache_static_manifest config
+  environment: Mix.env(), # to tell prod and dev env appart
+  cache_static_manifest: "priv/static/cache_manifest.json" # optional
+
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
