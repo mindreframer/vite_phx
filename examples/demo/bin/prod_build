@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -e # fail quickly!
+# Initial setup
+mix deps.get --only prod
+MIX_ENV=prod mix compile
+
+# Install / update  JavaScript dependencies
+npm install --prefix ./assets
+
+# Compile assets
+npm run deploy --prefix ./assets
+mix phx.digest
+
+# Generate release
+MIX_ENV=prod mix release
