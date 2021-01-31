@@ -9,7 +9,7 @@ defmodule Vite do
     Manifest.get_file(Config.main_file())
   end
 
-  @spec main_css() :: binary()
+  @spec main_css() :: [binary()]
   def main_css() do
     Manifest.get_css(Config.main_file())
   end
