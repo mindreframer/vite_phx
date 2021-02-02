@@ -3,6 +3,7 @@ defmodule Vite.View do
   Help with View integration into Phoenix views
   """
   alias Vite.Entry
+  alias Vite.Config
 
   @doc """
   Generate all links for an entry struct in following order:
@@ -44,4 +45,20 @@ defmodule Vite.View do
   def module_script(src, prefix) do
     ~s{<script type="module" crossorigin defer phx-track-static src="#{prefix <> src}"></script>}
   end
+
+  def vite_client() do
+    case Config.current_env() do
+      :prod -> ""
+      _ -> ~s(<script type="module" src="#{Config.dev_server_address()}/@vite/client"></script>) |> as_safe()
+    end
+  end
+
+  def vite_snippet(entry_name) do
+    case Config.current_env() do
+      :prod -> Vite.Manifest.entry(entry_name) |> for_entry() |> as_safe()
+      _ -> ~s(<script type="module" src="#{Config.dev_server_address()}/#{entry_name}"></script>) |> as_safe()
+    end
+  end
+
+  defp as_safe(s), do: {:safe, s}
 end
