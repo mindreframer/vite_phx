@@ -11,10 +11,10 @@ Vite helps you to integrate [Vite.js](https://vitejs.dev) with Phoenix.
 # in config/config.exs
 
 config :vite_phx,
-  main_file: "src/main.tsx",
   endpoint: MyAppWeb.Endpoint, # required get the :cache_static_manifest config
   environment: Mix.env(), # to tell prod and dev env appart
-  cache_static_manifest: "priv/static/cache_manifest.json" # optional
+  cache_static_manifest: "priv/static/cache_manifest.json", # optional
+  dev_server_address: "http://localhost:3000" # optional
 ```
 
 ## Installation
