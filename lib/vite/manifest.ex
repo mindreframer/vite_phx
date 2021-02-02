@@ -24,6 +24,10 @@ defmodule Vite.Manifest do
     |> Enum.map(&from_raw/1)
   end
 
+  @spec entry(binary()) :: Entry.t()
+  def entry(entry_name) do
+    Enum.find(entries(), &(&1.name == entry_name))
+  end
   defp isEntry({_key, value}) do
     Map.get(value, "isEntry") == true
   end
