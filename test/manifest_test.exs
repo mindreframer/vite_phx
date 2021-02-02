@@ -2,7 +2,6 @@ defmodule Vite.ManifestTest do
   use ExUnit.Case
   alias Vite.Manifest
   alias Vite.Config
-  alias Vite.Entry
 
   describe "read/0" do
     test "delegatees to PhxManifestReader" do

@@ -20,9 +20,14 @@ defmodule Vite.View do
   @spec for_entry(Entry.t(), binary()) :: binary()
   def for_entry(entry = %Entry{}, prefix \\ "/") do
     script = entry.file |> module_script(prefix)
-    css_files = entry.cssfiles |> Enum.map(&css_link(&1, prefix)) |> Enum.join("\n")
     imports = entry.imports |> Enum.map(&module_preload(&1, prefix)) |> Enum.join("\n")
+    css_files = entry.cssfiles |> Enum.map(&css_link(&1, prefix)) |> Enum.join("\n")
     [css_files, script, imports] |> Enum.join("\n")
+  end
+
+  @spec for_entries(list(Entry.t())) :: binary()
+  def for_entries(entries, prefix \\ "/") do
+    entries |> Enum.map(&for_entry(&1, prefix)) |> Enum.join("\n")
   end
 
   @spec module_preload(binary(), binary()) :: binary()
