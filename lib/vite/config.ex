@@ -2,6 +2,17 @@ defmodule Vite.Config do
   alias Vite.Cache
   require Logger
 
+  def all() do
+    %{
+      endpoint: endpoint(),
+      main_file: main_file(),
+      current_env: current_env(),
+      json_library: json_library(),
+      manifest_path: manifest_path(),
+      dev_server_address: dev_server_address(),
+    }
+  end
+
   @doc """
   specified in vite.config.js in build.rollupOptions.input
   """
