@@ -17,6 +17,7 @@ defmodule Vite.Manifest do
     PhxManifestReader.read()
   end
 
+  @spec entries() :: [Entry.t()]
   def entries() do
     read()
     |> Enum.filter(&isEntry/1)
@@ -28,6 +29,8 @@ defmodule Vite.Manifest do
   def entry(entry_name) do
     Enum.find(entries(), &(&1.name == entry_name))
   end
+
+  @spec isEntry({any, map()}) :: boolean()
   defp isEntry({_key, value}) do
     Map.get(value, "isEntry") == true
   end
