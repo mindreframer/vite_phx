@@ -1,9 +1,23 @@
 # Vite
+[Vite.js]: https://vitejs.dev/
 
 [![Build Status](https://github.com/mindreframer/vite_phx/workflows/CI/badge.svg)](https://github.com/mindreframer/vite_phx/actions?query=workflow%3A%22CI%22)
 
-Vite helps you to integrate [Vite.js](https://vitejs.dev) with Phoenix.
+Vite helps you to integrate [Vite.js] with Phoenix.
 
+## Instructions
+
+Add following lines to your layout template:
+
+```elixir
+<!-- load the vite.js client script in dev/test environments -->
+<%= Vite.vite_client() %>
+<!--
+entry point for your application
+- delegates to [Vite.js] in dev / loads all modules / styles in production from the manifest.json
+-->
+<%= Vite.vite_snippet("src/main.tsx") %>
+```
 
 ## Configuration
 
