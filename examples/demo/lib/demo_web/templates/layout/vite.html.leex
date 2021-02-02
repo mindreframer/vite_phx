@@ -7,8 +7,8 @@
     <%= csrf_meta_tag() %>
     <%= live_title_tag assigns[:page_title] || "Demo", suffix: " · Phoenix Framework" %>
 
-    <%= Vite.View.vite_client() %>
-    <%= Vite.View.vite_snippet("src/main.tsx") %>
+    <%= Vite.vite_client() %>
+    <%= Vite.vite_snippet("src/main.tsx") %>
   </head>
   <body>
     <div id="app"></div>
