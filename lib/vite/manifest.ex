@@ -18,8 +18,14 @@ defmodule Vite.Manifest do
   end
 
   def entries() do
-    raw_list = read() |> Enum.filter(fn({_, y})-> y |> Map.get("isEntry") == true end) |> Enum.map(fn({_, y})-> y end)
-    Enum.map(raw_list ,&from_raw/1)
+    read()
+    |> Enum.filter(&isEntry/1)
+    |> Enum.map(fn {_, value} -> value end)
+    |> Enum.map(&from_raw/1)
+  end
+
+  defp isEntry({_key, value}) do
+    Map.get(value, "isEntry") == true
   end
 
   # %{
@@ -31,10 +37,10 @@ defmodule Vite.Manifest do
   # }
   defp from_raw(raw) do
     %Entry{
-      name: raw |> Map.get("src"),
-      file: raw |> Map.get("file"),
-      cssfiles: raw |> Map.get("css"),
-      imports: raw |> Enum.map(&get_file/1)
+      name: Map.get(raw, "src"),
+      file: Map.get(raw, "file"),
+      cssfiles: Map.get(raw, "css"),
+      imports: Map.get(raw, "imports", []) |> Enum.map(&get_file/1)
     }
   end
 

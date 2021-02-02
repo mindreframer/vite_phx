@@ -2,11 +2,27 @@ defmodule Vite.ManifestTest do
   use ExUnit.Case
   alias Vite.Manifest
   alias Vite.Config
+  alias Vite.Entry
 
-  describe "read" do
+  describe "read/0" do
     test "delegatees to PhxManifestReader" do
       Config.manifest_path("test/fixtures/basic-2.0.0-beta.58.json")
       assert is_map(Manifest.read())
+    end
+  end
+
+  describe "entries/0" do
+    test "will collect only entry items and convert to Entry structs" do
+      Config.manifest_path("test/fixtures/basic-2.0.0-beta.58.json")
+
+      assert Manifest.entries() == [
+               %Vite.Entry{
+                 cssfiles: ["assets/main.c14674d5.css"],
+                 file: "assets/main.9160cfe1.js",
+                 imports: ["assets/vendor.3b127d10.js"],
+                 name: "src/main.tsx"
+               }
+             ]
     end
   end
 
