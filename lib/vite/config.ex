@@ -9,7 +9,7 @@ defmodule Vite.Config do
       current_env: current_env(),
       json_library: json_library(),
       manifest_path: manifest_path(),
-      dev_server_address: dev_server_address(),
+      dev_server_address: dev_server_address()
     }
   end
 

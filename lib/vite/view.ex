@@ -10,8 +10,12 @@ defmodule Vite.View do
   @spec vite_client :: binary() | {:safe, binary()}
   def vite_client() do
     case Config.current_env() do
-      :prod -> ""
-      _ -> ~s(<script type="module" src="#{Config.dev_server_address()}/@vite/client"></script>) |> as_safe()
+      :prod ->
+        ""
+
+      _ ->
+        ~s(<script type="module" src="#{Config.dev_server_address()}/@vite/client"></script>)
+        |> as_safe()
     end
   end
 
@@ -21,8 +25,12 @@ defmodule Vite.View do
   @spec vite_snippet(binary()) :: binary() | {:safe, binary()}
   def vite_snippet(entry_name) do
     case Config.current_env() do
-      :prod -> Vite.Manifest.entry(entry_name) |> for_entry() |> as_safe()
-      _ -> ~s(<script type="module" src="#{Config.dev_server_address()}/#{entry_name}"></script>) |> as_safe()
+      :prod ->
+        Vite.Manifest.entry(entry_name) |> for_entry() |> as_safe()
+
+      _ ->
+        ~s(<script type="module" src="#{Config.dev_server_address()}/#{entry_name}"></script>)
+        |> as_safe()
     end
   end
 
