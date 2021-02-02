@@ -9,6 +9,10 @@ defmodule Vite.Config do
     Application.get_env(:vite_phx, :main_file) || "src/main.tsx"
   end
 
+  def dev_server_address() do
+    Application.get_env(:vite_phx, :dev_server_address) || "http://localhost:3000"
+  end
+
   def endpoint() do
     Application.get_env(:vite_phx, :endpoint) ||
       Logger.error(
