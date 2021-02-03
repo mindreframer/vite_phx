@@ -6,7 +6,7 @@ defmodule Vite.Manifest do
   - https://github.com/vitejs/vite/blob/main/packages/vite/src/node/plugins/manifest.ts
 
   """
-  alias Vite.PhxManifestReader
+  alias Vite.ManifestReader
   alias Vite.Entry
   require Logger
 
@@ -14,7 +14,7 @@ defmodule Vite.Manifest do
 
   @spec read() :: map()
   def read() do
-    PhxManifestReader.read()
+    ManifestReader.read()
   end
 
   @spec entries() :: [Entry.t()]

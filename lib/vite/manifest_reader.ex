@@ -1,7 +1,6 @@
-defmodule Vite.PhxManifestReader do
+defmodule Vite.ManifestReader do
   @moduledoc """
-  Finding proper path for `cache_manifest.json` in releases is a non-trivial operation,
-  so we keep this logic in a dedicated module
+  Finds `manifest.json` in releases, keeps the content in-memory
   """
   alias Vite.{Cache, Config}
   require Logger
