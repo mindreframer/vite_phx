@@ -1,6 +1,6 @@
 defmodule Vite.Manifest do
   @moduledoc """
-  Basic and incomplete parser for Vite.js manifests
+  Basic parser for Vite.js manifests
   See for more details:
   - https://vitejs.dev/guide/backend-integration.html
   - https://github.com/vitejs/vite/blob/main/packages/vite/src/node/plugins/manifest.ts

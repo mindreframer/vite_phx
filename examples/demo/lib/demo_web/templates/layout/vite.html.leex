@@ -12,6 +12,10 @@
   </head>
   <body>
     <div id="app"></div>
+
+    <div class="container phx-hero">
+      <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo" height="50" />
+    </div>
     <%= @inner_content %>
   </body>
 </html>
