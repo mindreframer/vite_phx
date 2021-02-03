@@ -11,11 +11,7 @@ cd assets && yarn ; cd ..
 
 # Compile assets
 cd assets && yarn build ; cd ..
-echo "renaming manifest.json -> cache_manifest.json"
-mv priv/static/manifest.json priv/static/cache_manifest.json
-## we skip phx.digest because files we get are already with a hash in the name
-## there might be a smarter workaround, yet this seems to be simpler and portable
-# mix phx.digest
+mix phx.digest
 
 
 # Generate release
