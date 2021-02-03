@@ -6,4 +6,8 @@ defmodule Vite do
 
   defdelegate vite_client, to: View
   defdelegate vite_snippet(entry_name), to: View
+
+  def is_prod() do
+    Vite.Config.current_env() == :prod
+  end
 end

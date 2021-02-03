@@ -16,6 +16,15 @@ defmodule DemoWeb.Endpoint do
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
+  unless Vite.is_prod() do
+    # Support serving from assets/public folder directly (only during development)
+    # still keep the "priv/static" pipeline as fallback + for production
+    plug Plug.Static,
+      from: "assets/public",
+      at: "/",
+      only: ~w(images favicon.ico robots.txt)
+  end
+
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phx.digest
