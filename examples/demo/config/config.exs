@@ -25,13 +25,11 @@ config :phoenix, :json_library, Jason
 
 # Configure Vite
 config :vite_phx,
-  main_file: "src/main.tsx",
-  # required get the :cache_static_manifest config
-  endpoint: DemoWeb.Endpoint,
+  release_app: :demo,
   # to tell prod and dev env appart
   environment: Mix.env(),
-  # optional
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  # this manifest is different from the phx "cache_manifest.json"!
+  vite_manifest: "priv/static/manifest.json"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

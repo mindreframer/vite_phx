@@ -4,30 +4,18 @@ defmodule Vite.Config do
 
   def all() do
     %{
-      endpoint: endpoint(),
-      main_file: main_file(),
+      release_app: release_app(),
       current_env: current_env(),
+      vite_manifest: vite_manifest(),
       json_library: json_library(),
-      manifest_path: manifest_path(),
       dev_server_address: dev_server_address()
     }
   end
 
-  @doc """
-  specified in vite.config.js in build.rollupOptions.input
-  """
-  def main_file() do
-    Application.get_env(:vite_phx, :main_file) || "src/main.tsx"
-  end
-
-  def dev_server_address() do
-    Application.get_env(:vite_phx, :dev_server_address) || "http://localhost:3000"
-  end
-
-  def endpoint() do
-    Application.get_env(:vite_phx, :endpoint) ||
+  def release_app() do
+    Application.get_env(:vite_phx, :release_app) ||
       Logger.error(
-        "Configuration for Vite endpoint missing! Provide via: `config :vite_phx, :endpoint, MyAppWeb.Endpoint`"
+        "Configuration for Vite release_app missing! Provide via: `config :vite_phx, :release_app, :my_app`"
       )
   end
 
@@ -35,17 +23,20 @@ defmodule Vite.Config do
     Application.get_env(:vite_phx, :environment, :dev)
   end
 
+  def vite_manifest() do
+    Application.get_env(:vite_phx, :vite_manifest) || "priv/static/manifest.json"
+  end
+
+  def vite_manifest(file) do
+    Application.put_env(:vite_phx, :vite_manifest, file)
+    Cache.purge()
+  end
+
+  def dev_server_address() do
+    Application.get_env(:vite_phx, :dev_server_address) || "http://localhost:3000"
+  end
+
   def json_library() do
     Application.get_env(:vite_phx, :json_library, Phoenix.json_library())
-  end
-
-  def manifest_path() do
-    Application.get_env(:vite_phx, :cache_static_manifest) ||
-      endpoint().config(:cache_static_manifest) || "priv/static/cache_manifest.json"
-  end
-
-  def manifest_path(file) do
-    Application.put_env(:vite_phx, :cache_static_manifest, file)
-    Cache.purge()
   end
 end
