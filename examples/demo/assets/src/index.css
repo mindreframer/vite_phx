@@ -17,9 +17,9 @@ body {
 }
 
 #app {
-  height: 200px;
-  max-width:37.5em;
-  margin:0 auto;
+  height: 250px;
+  max-width: 80.0rem;
+  margin: 0 auto;
 
   text-align: center;
   background-color: #673ab8;

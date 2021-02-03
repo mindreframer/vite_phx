@@ -22,7 +22,8 @@
    max-width: 80.0rem;
    padding: 0 2.0rem;
    position: relative;
-   width: 100%
+   width: 100%;
+   background: #eee;
  }
  select {
    width: auto;
@@ -32,7 +33,6 @@
  .phx-hero {
    text-align: center;
    border-bottom: 1px solid #e3e3e3;
-   background: #eee;
    border-radius: 6px;
    padding: 3em 3em 1em;
    margin-bottom: 3rem;
