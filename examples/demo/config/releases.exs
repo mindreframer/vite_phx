@@ -1,5 +1,7 @@
 import Config
 
+IO.puts("loading config/releases.exs")
+
 secret_key_base =
   System.get_env("SECRET_KEY_BASE") ||
     raise """

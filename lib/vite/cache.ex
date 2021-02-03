@@ -1,5 +1,5 @@
 defmodule Vite.Cache do
-  @cache_key {:vite, "cache_manifest"}
+  @cache_key {:vite, "manifest"}
 
   @spec get() :: any()
   def get() do
