@@ -24,10 +24,13 @@ entry point for your application
 ```elixir
 # in config/config.exs
 
+# Configure Vite
 config :vite_phx,
-  endpoint: MyAppWeb.Endpoint, # required get the :cache_static_manifest config
-  environment: Mix.env(), # to tell prod and dev env appart
-  cache_static_manifest: "priv/static/cache_manifest.json", # optional
+  release_app: :demo,
+  # to tell prod and dev env appart
+  environment: Mix.env(),
+  # this manifest is different from the phx "cache_manifest.json"!
+  vite_manifest: "priv/static/manifest.json",
   dev_server_address: "http://localhost:3000" # optional
 ```
 
