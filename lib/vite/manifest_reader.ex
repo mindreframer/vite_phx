@@ -18,9 +18,7 @@ defmodule Vite.ManifestReader do
   end
 
   def read(:prod) do
-    app = Config.release_app()
-    vite_manifest = Config.vite_manifest()
-    full_manifest_path = Application.app_dir(app, vite_manifest)
+    full_manifest_path = Config.full_vite_manifest()
 
     if File.exists?(full_manifest_path) do
       full_manifest_path |> File.read!() |> Phoenix.json_library().decode!()

@@ -8,7 +8,9 @@ defmodule Vite.Config do
       current_env: current_env(),
       vite_manifest: vite_manifest(),
       json_library: json_library(),
-      dev_server_address: dev_server_address()
+      dev_server_address: dev_server_address(),
+      full_vite_manifest: full_vite_manifest(),
+      full_phx_manifest: full_phx_manifest()
     }
   end
 
@@ -21,6 +23,11 @@ defmodule Vite.Config do
 
   def current_env() do
     Application.get_env(:vite_phx, :environment, :dev)
+  end
+
+  # FIXME: dont hardcode, read from Endpoint
+  def phx_manifest() do
+    "priv/static/cache_manifest.json"
   end
 
   def vite_manifest() do
@@ -38,5 +45,17 @@ defmodule Vite.Config do
 
   def json_library() do
     Application.get_env(:vite_phx, :json_library, Phoenix.json_library())
+  end
+
+  def full_vite_manifest() do
+    in_release_path(vite_manifest())
+  end
+
+  def full_phx_manifest() do
+    in_release_path(phx_manifest())
+  end
+
+  def in_release_path(file) do
+    Application.app_dir(release_app(), file)
   end
 end

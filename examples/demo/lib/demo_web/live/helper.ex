@@ -13,6 +13,7 @@ defmodule DemoWeb.Live.Helper do
 
   def a_helper() do
     assigns = %{:__changed__ => false, message: "FROM INSIDE"}
+
     ~L"""
     <p>
       MESSAGE: <%= @message %>
@@ -22,7 +23,6 @@ defmodule DemoWeb.Live.Helper do
     </p>
     """
   end
-
 
   def subhelper() do
     assigns = %{:__changed__ => false, message: "FROM SUBHELPER"}

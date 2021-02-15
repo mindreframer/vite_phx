@@ -48,7 +48,7 @@ defmodule Demo.MixProject do
 
       # use our dev vite_phx
       {:vite_phx, path: "../../"},
-      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false}
     ]
   end
 

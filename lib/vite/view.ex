@@ -101,5 +101,21 @@ defmodule Vite.View do
     ~s{<script type="module" crossorigin defer phx-track-static src="#{prefix <> src}"></script>}
   end
 
+  def inline_phx_manifest do
+    case Config.current_env() do
+      :prod ->
+        json =
+          File.read!(Config.full_phx_manifest())
+          |> Jason.decode!()
+          |> Map.get("latest")
+          |> Jason.encode!(pretty: true)
+
+        as_safe(["<script>", ["window.PhxManifest = ", [json, ["</script>"]]]])
+
+      _ ->
+        ""
+    end
+  end
+
   defp as_safe(s), do: {:safe, s}
 end
