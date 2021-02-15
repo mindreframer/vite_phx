@@ -10,6 +10,7 @@ defmodule Demo.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
+      dialyzer: [ignore_warnings: "dialyzer.ignore-warnings", list_unused_filters: true],
       deps: deps()
     ]
   end
@@ -46,7 +47,8 @@ defmodule Demo.MixProject do
       {:plug_cowboy, "~> 2.0"},
 
       # use our dev vite_phx
-      {:vite_phx, path: "../../"}
+      {:vite_phx, path: "../../"},
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
     ]
   end
 
