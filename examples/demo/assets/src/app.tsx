@@ -13,7 +13,7 @@ export function App() {
       <p>Hello Vite + Preact!</p>
       {imgContainers}
       <br/>
-      <img src="/images/phoenix.png" height={50} style="padding: 5px;" />
+      <img src="/images/phoenix.png" height={50} style="padding: 5px; background-color: #00b4d8;" />
     </>
   );
 }
