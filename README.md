@@ -29,8 +29,9 @@ config :vite_phx,
   release_app: :demo,
   # to tell prod and dev env appart
   environment: Mix.env(),
-  # this manifest is different from the phx "cache_manifest.json"!
-  vite_manifest: "priv/static/manifest.json",
+  # this manifest is different from the Phoenix "cache_manifest.json"!
+  vite_manifest: "priv/static/manifest.json", # optional
+  phx_manifest: "priv/static/cache_manifest.json", # optional
   dev_server_address: "http://localhost:3000" # optional
 ```
 
