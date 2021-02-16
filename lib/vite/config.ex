@@ -32,7 +32,7 @@ defmodule Vite.Config do
 
   def phx_manifest(file) do
     Application.put_env(:vite_phx, :phx_manifest, file)
-    Cache.purge()
+    Cache.purge(:phx_manifest)
   end
 
   def vite_manifest() do
@@ -41,7 +41,7 @@ defmodule Vite.Config do
 
   def vite_manifest(file) do
     Application.put_env(:vite_phx, :vite_manifest, file)
-    Cache.purge()
+    Cache.purge(:vite_manifest)
   end
 
   def dev_server_address() do

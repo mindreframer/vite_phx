@@ -5,11 +5,11 @@ defmodule Vite.ManifestReader do
   alias Vite.{Cache, Config}
   require Logger
 
-  def read() do
-    case Cache.get() do
+  def read_vite() do
+    case Cache.get(:vite_manifest) do
       nil ->
-        res = read(Config.current_env())
-        Cache.put(res)
+        res = read_vite(Config.current_env())
+        Cache.put(:vite_manifest, res)
         res
 
       res ->
@@ -17,21 +17,40 @@ defmodule Vite.ManifestReader do
     end
   end
 
-  def read(:prod) do
-    full_manifest_path = Config.full_vite_manifest()
+  def read_vite(:prod) do
+    full_vite_manifest = Config.full_vite_manifest()
 
-    if File.exists?(full_manifest_path) do
-      full_manifest_path |> File.read!() |> Phoenix.json_library().decode!()
+    if File.exists?(full_vite_manifest) do
+      full_vite_manifest |> File.read!() |> Config.json_library().decode!()
     else
       Logger.error(
-        "Could not find static manifest at #{inspect(full_manifest_path)}. " <>
+        "Could not find static manifest at #{inspect(full_vite_manifest)}. " <>
           "Run \"mix phx.digest\" after building your static files " <>
           "or remove the configuration from \"config/prod.exs\"."
       )
     end
   end
 
-  def read(_) do
+  def read_vite(_) do
     File.read!(Config.vite_manifest()) |> Config.json_library().decode!()
+  end
+
+  def read_phx() do
+    case Cache.get(:phx_manifest) do
+      nil ->
+        res = read_phx(Config.current_env())
+        Cache.put(:phx_manifest, res)
+        res
+
+      res ->
+        res
+    end
+  end
+
+  def read_phx(:prod) do
+    File.read!(Config.full_phx_manifest()) |> Config.json_library().decode!()
+  end
+  def read_phx(_) do
+    ""
   end
 end

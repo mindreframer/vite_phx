@@ -2,7 +2,7 @@ defmodule Vite.View do
   @moduledoc """
   Help with View integration into Phoenix views
   """
-  alias Vite.{Config, Entry}
+  alias Vite.{Config, Entry, ManifestReader}
 
   @doc """
   The snippet for `@vite/client` during development. Does nothing in :prod env.
@@ -112,8 +112,7 @@ defmodule Vite.View do
     case Config.current_env() do
       :prod ->
         manifest =
-          File.read!(Config.full_phx_manifest())
-          |> Config.json_library().decode!()
+          ManifestReader.read_phx()
           |> Map.get("latest")
           |> Config.json_library().encode!(pretty: true)
 

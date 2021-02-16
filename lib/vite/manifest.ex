@@ -14,7 +14,7 @@ defmodule Vite.Manifest do
 
   @spec read() :: map()
   def read() do
-    ManifestReader.read()
+    ManifestReader.read_vite()
   end
 
   @spec entries() :: [Entry.t()]
