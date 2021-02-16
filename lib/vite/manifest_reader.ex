@@ -50,6 +50,7 @@ defmodule Vite.ManifestReader do
   def read_phx(:prod) do
     File.read!(Config.full_phx_manifest()) |> Config.json_library().decode!()
   end
+
   def read_phx(_) do
     ""
   end
