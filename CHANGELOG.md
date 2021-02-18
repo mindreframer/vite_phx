@@ -1,3 +1,6 @@
+# 0.2.1
+- `Vite.react_refresh_snippet()` to enable hot-reload for React.js + documentation
+
 # 0.2.0
 - simpler integration into HTML templates
   - `Vite.vite_client()` for development
