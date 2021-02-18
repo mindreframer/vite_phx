@@ -10,12 +10,18 @@ Vite helps you to integrate [Vite.js] with Phoenix.
 Add following lines to your layout template:
 
 ```elixir
-<!-- load the vite.js client script in dev/test environments -->
+<%# load the vite.js client script in dev/test environments %>
 <%= Vite.vite_client() %>
-<!--
+
+
+<%# When using React.js, also include this preamble hot refresh code %>
+<%= Vite.react_refresh_snippet() %>
+
+
+<%#
 entry point for your application
 - delegates to [Vite.js] in dev / loads all modules / styles in production from the manifest.json
--->
+%>
 <%= Vite.vite_snippet("src/main.tsx") %>
 ```
 
