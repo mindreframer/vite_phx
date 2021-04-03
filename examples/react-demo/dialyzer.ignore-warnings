@@ -1,0 +1,4 @@
+The pattern #{} can never match the type 'nil'
+The call 'Elixir.TypeCheck.TypeError':exception
+The variable _ can never match
+The pattern {'error', _

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+echo "This will install overmind (OSX) into the bin folder, do you want to proceed? (Y/n)"
+read ans
+
+if ([ "$ans" != "" ] && [ "$ans" != "y" ] && [ "$ans" != "Y" ]) ; then
+    echo "cancelling..."
+    exit 0
+fi
+
+DIRECTORY=$(cd `dirname $0` && pwd)
+echo $DIRECTORY
+cd $DIRECTORY
+wget https://github.com/DarthSim/overmind/releases/download/v2.2.0/overmind-v2.2.0-macos-amd64.gz
+gunzip overmind-v2.2.0-macos-amd64.gz
+mv overmind-v2.2.0-macos-amd64 overmind
+chmod +x overmind

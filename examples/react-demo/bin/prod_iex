@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+cd _build/prod/rel/demo
+SECRET_KEY_BASE="YVxXywQP0QadeOQBT61hXugPTc+qRRDZvQnwRCp2Jvf+i2Vd5k11BJ0GdjXu3o67" bin/demo start_iex
+
