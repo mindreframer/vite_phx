@@ -1,5 +1,6 @@
 defmodule Vite.React do
   alias Vite.Config
+
   @doc """
   Inlined preamble from https://github.com/vitejs/vite/blob/main/packages/plugin-react-refresh/index.js#L24 to enable hot-reloading for React.js
   """
@@ -15,7 +16,7 @@ defmodule Vite.React do
         window.$RefreshSig$ = () => (type) => type
         window.__vite_plugin_react_preamble_installed__ = true
         </script>
-      ] }
+      ]}
     end
   end
 end
