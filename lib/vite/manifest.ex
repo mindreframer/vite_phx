@@ -46,7 +46,7 @@ defmodule Vite.Manifest do
     %Entry{
       name: Map.get(raw, "src"),
       file: Map.get(raw, "file"),
-      cssfiles: Map.get(raw, "css"),
+      cssfiles: Map.get(raw, "css", []),
       imports: Map.get(raw, "imports", []) |> Enum.map(&get_file/1)
     }
   end
@@ -58,7 +58,7 @@ defmodule Vite.Manifest do
 
   @spec get_css(binary()) :: entry_value()
   def get_css(file) do
-    read() |> get_in([file, "css"]) |> raise_missing(file)
+    read() |> get_in_with_default([file, "css"], [])
   end
 
   @spec get_imports(binary()) :: entry_value()
@@ -77,6 +77,13 @@ defmodule Vite.Manifest do
       raise("Could not find an entry for #{file} in the manifest!")
     else
       check
+    end
+  end
+
+  defp get_in_with_default(map, path, default) do
+    case get_in(map, path) do
+      nil -> default
+      result -> result
     end
   end
 end

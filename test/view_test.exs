@@ -21,6 +21,15 @@ defmodule Vite.ViewTest do
     }
   end
 
+  def entry(3) do
+    %Entry{
+      name: "src/main.js",
+      file: "assets/main.9160cfe1.js",
+      cssfiles: [],
+      imports: ["assets/vendor.3b127d10.js", "assets/vendor.bbddaa33.js"]
+    }
+  end
+
   def no_lf(s), do: String.replace(s, "\n", "")
   def no_indent(s), do: Regex.replace(~r/^\s+/m, s, "")
   def strip(s), do: s |> no_indent() |> no_lf()
@@ -44,6 +53,17 @@ defmodule Vite.ViewTest do
                ~S{
           <link phx-track-static rel="stylesheet" href="/assets/main.c14674d5.css"/>
           <link phx-track-static rel="stylesheet" href="/assets/main.c33345b3.css"/>
+          <script type="module" crossorigin defer phx-track-static src="/assets/main.9160cfe1.js"></script>
+          <link rel="modulepreload" href="/assets/vendor.3b127d10.js">
+          <link rel="modulepreload" href="/assets/vendor.bbddaa33.js">
+        } |> strip()
+    end
+
+    test "generates the complete markup to include scripts (3)" do
+      e = entry(3)
+
+      assert View.for_entry(e) |> strip() ==
+               ~S{
           <script type="module" crossorigin defer phx-track-static src="/assets/main.9160cfe1.js"></script>
           <link rel="modulepreload" href="/assets/vendor.3b127d10.js">
           <link rel="modulepreload" href="/assets/vendor.bbddaa33.js">

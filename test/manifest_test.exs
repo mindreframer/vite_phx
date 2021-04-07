@@ -48,14 +48,14 @@ defmodule Vite.ManifestTest do
       assert Manifest.get_css("src/main.tsx") == ["assets/main.c14674d5.css"]
     end
 
-    test "raises on missing keys" do
-      Config.vite_manifest("test/fixtures/basic-2.0.0-beta.58.json")
+    test "will return a default empty list, if CSS is missing in the manifest" do
+      Config.vite_manifest("test/fixtures/empty-css.json")
+      assert Manifest.get_css("src/main.tsx") == []
+    end
 
-      assert_raise RuntimeError,
-                   "Could not find an entry for src/nope.tsx in the manifest!",
-                   fn ->
-                     Manifest.get_css("src/nope.tsx")
-                   end
+    test "return an empty list, even if NO entry could be found" do
+      Config.vite_manifest("test/fixtures/basic-2.0.0-beta.58.json")
+      assert Manifest.get_css("src/nope.tsx") == []
     end
   end
 

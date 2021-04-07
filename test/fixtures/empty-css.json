@@ -1,0 +1,11 @@
+{
+  "src/main.tsx": {
+    "file": "assets/main.9160cfe1.js",
+    "src": "src/main.tsx",
+    "isEntry": true,
+    "imports": ["_vendor.3b127d10.js"]
+  },
+  "_vendor.3b127d10.js": {
+    "file": "assets/vendor.3b127d10.js"
+  }
+}
