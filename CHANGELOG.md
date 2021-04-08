@@ -1,3 +1,7 @@
+# 0.2.3
+
+Somehow the version on Hex.pm for 0.2.2 has the 0.2.1 version in it. Bumping version to publish the correct one.
+
 # 0.2.2
 
 - `Vite.Manifest.get_css` returns an empty list, if CSS values are missing in the manifest (closes https://github.com/mindreframer/vite_phx/issues/1)
