@@ -49,7 +49,7 @@ by adding `vite` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:vite_phx, "~> 0.1.0"}
+    {:vite_phx, "~> 0.2"}
   ]
 end
 ```
