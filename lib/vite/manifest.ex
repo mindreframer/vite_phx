@@ -47,6 +47,7 @@ defmodule Vite.Manifest do
       name: Map.get(raw, "src"),
       file: Map.get(raw, "file"),
       cssfiles: Map.get(raw, "css", []),
+      is_entry: Map.get(raw, "isEntry", false),
       imports: Map.get(raw, "imports", []) |> Enum.map(&get_file/1)
     }
   end

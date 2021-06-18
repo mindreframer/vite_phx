@@ -17,6 +17,7 @@ defmodule Vite.ManifestTest do
       assert Manifest.entries() == [
                %Vite.ManifestItem{
                  cssfiles: ["assets/main.c14674d5.css"],
+                 is_entry: true,
                  file: "assets/main.9160cfe1.js",
                  imports: ["assets/vendor.3b127d10.js"],
                  name: "src/main.tsx"

@@ -7,7 +7,7 @@ defmodule Vite.ManifestItem do
     imports: ["assets/vendor.3b127d10.js"]
   }
   """
-  defstruct name: nil, file: nil, cssfiles: [], imports: []
+  defstruct name: nil, file: nil, cssfiles: [], imports: [], is_entry: false
 
   @type t :: %Vite.ManifestItem{}
 end
