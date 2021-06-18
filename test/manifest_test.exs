@@ -15,7 +15,7 @@ defmodule Vite.ManifestTest do
       Config.vite_manifest("test/fixtures/basic-2.0.0-beta.58.json")
 
       assert Manifest.entries() == [
-               %Vite.Entry{
+               %Vite.ManifestItem{
                  cssfiles: ["assets/main.c14674d5.css"],
                  file: "assets/main.9160cfe1.js",
                  imports: ["assets/vendor.3b127d10.js"],
@@ -73,6 +73,15 @@ defmodule Vite.ManifestTest do
                    fn ->
                      Manifest.get_imports("src/nope.tsx")
                    end
+    end
+
+    test "works with nested imports" do
+      Config.vite_manifest("test/fixtures/nested_imports.json")
+
+      assert Manifest.get_imports("src/main-nested.tsx") == [
+               "assets/dynamic-import-polyfill.b75f6adf.js",
+               "assets/vendor.2c7f0e08.js"
+             ]
     end
   end
 end

@@ -1,6 +1,6 @@
-defmodule Vite.Entry do
+defmodule Vite.ManifestItem do
   @moduledoc """
-  %Vite.Entry{
+  %Vite.ManifestItem{
     name: "src/main.tsx",
     file: "assets/main.9160cfe1.js",
     cssfiles: ["assets/main.c14674d5.css"],
@@ -9,5 +9,5 @@ defmodule Vite.Entry do
   """
   defstruct name: nil, file: nil, cssfiles: [], imports: []
 
-  @type t :: %Vite.Entry{}
+  @type t :: %Vite.ManifestItem{}
 end

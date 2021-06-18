@@ -1,10 +1,10 @@
 defmodule Vite.ViewTest do
   use ExUnit.Case
   alias Vite.View
-  alias Vite.Entry
+  alias Vite.ManifestItem
 
   def entry(1) do
-    %Entry{
+    %ManifestItem{
       name: "src/main.tsx",
       file: "assets/main.9160cfe1.js",
       cssfiles: ["assets/main.c14674d5.css"],
@@ -13,7 +13,7 @@ defmodule Vite.ViewTest do
   end
 
   def entry(2) do
-    %Entry{
+    %ManifestItem{
       name: "src/main.js",
       file: "assets/main.9160cfe1.js",
       cssfiles: ["assets/main.c14674d5.css", "assets/main.c33345b3.css"],
@@ -22,7 +22,7 @@ defmodule Vite.ViewTest do
   end
 
   def entry(3) do
-    %Entry{
+    %ManifestItem{
       name: "src/main.js",
       file: "assets/main.9160cfe1.js",
       cssfiles: [],

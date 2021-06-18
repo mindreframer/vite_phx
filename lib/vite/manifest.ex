@@ -7,7 +7,7 @@ defmodule Vite.Manifest do
 
   """
   alias Vite.ManifestReader
-  alias Vite.Entry
+  alias Vite.ManifestItem
   require Logger
 
   @type entry_value :: binary() | list(binary()) | nil
@@ -43,7 +43,7 @@ defmodule Vite.Manifest do
   #   "src" => "src/main.tsx"
   # }
   defp from_raw(raw) do
-    %Entry{
+    %ManifestItem{
       name: Map.get(raw, "src"),
       file: Map.get(raw, "file"),
       cssfiles: Map.get(raw, "css", []),
