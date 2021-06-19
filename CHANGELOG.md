@@ -1,3 +1,18 @@
+# 0.3.0
+
+- Change entry format from Struct to a tuple list / Keyword
+
+```elixir
+[
+  {:entry_name, "src/main.tsx"},
+  {:css, "assets/main.aba08cbf.css"},
+  {:module, "assets/main.aef2b0ab.js"},
+  {:import_css, "assets/dynamic-import-polyfill.0f681641.css"},
+  {:import_module, "assets/dynamic-import-polyfill.b75f6adf.js"},
+  {:import_module, "assets/vendor.2c7f0e08.js"}
+]
+```
+
 # 0.2.3
 
 Somehow the version on Hex.pm for 0.2.2 has the 0.2.1 version in it. Bumping version to publish the correct one.

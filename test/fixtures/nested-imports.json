@@ -1,0 +1,40 @@
+{
+  "src/main.tsx": {
+    "file": "assets/main.aef2b0ab.js",
+    "src": "src/main.tsx",
+    "isEntry": true,
+    "imports": ["_dynamic-import-polyfill.b75f6adf.js", "_vendor.2c7f0e08.js"],
+    "css": ["assets/main.aba08cbf.css"]
+  },
+  "src/main-nested.tsx": {
+    "file": "assets/inertia.071fd92e.js",
+    "src": "src/main-nested.tsx",
+    "isEntry": true,
+    "imports": ["_dynamic-import-polyfill.b75f6adf.js", "_vendor.2c7f0e08.js"],
+    "dynamicImports": [
+      "src/Layouts/PlainLayout.tsx",
+      "src/Pages/Home/Index.tsx"
+    ]
+  },
+  "_vendor.2c7f0e08.js": {
+    "file": "assets/vendor.2c7f0e08.js"
+  },
+  "_dynamic-import-polyfill.b75f6adf.js": {
+    "file": "assets/dynamic-import-polyfill.b75f6adf.js",
+    "imports": ["_vendor.2c7f0e08.js"],
+    "css": ["assets/dynamic-import-polyfill.0f681641.css"]
+  },
+  "src/Layouts/PlainLayout.tsx": {
+    "file": "assets/PlainLayout.5cf6c52c.js",
+    "src": "src/Layouts/PlainLayout.tsx",
+    "isDynamicEntry": true,
+    "imports": ["_vendor.2c7f0e08.js"]
+  },
+  "src/Pages/Home/Index.tsx": {
+    "file": "assets/Index.12144700.js",
+    "src": "src/Pages/Home/Index.tsx",
+    "isDynamicEntry": true,
+    "imports": ["_vendor.2c7f0e08.js"],
+    "css": ["assets/Index.0c37808d.css"]
+  }
+}

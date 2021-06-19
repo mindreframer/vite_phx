@@ -1,34 +1,8 @@
 defmodule Vite.ViewTest do
   use ExUnit.Case
   alias Vite.View
-  alias Vite.Entry
-
-  def entry(1) do
-    %Entry{
-      name: "src/main.tsx",
-      file: "assets/main.9160cfe1.js",
-      cssfiles: ["assets/main.c14674d5.css"],
-      imports: ["assets/vendor.3b127d10.js"]
-    }
-  end
-
-  def entry(2) do
-    %Entry{
-      name: "src/main.js",
-      file: "assets/main.9160cfe1.js",
-      cssfiles: ["assets/main.c14674d5.css", "assets/main.c33345b3.css"],
-      imports: ["assets/vendor.3b127d10.js", "assets/vendor.bbddaa33.js"]
-    }
-  end
-
-  def entry(3) do
-    %Entry{
-      name: "src/main.js",
-      file: "assets/main.9160cfe1.js",
-      cssfiles: [],
-      imports: ["assets/vendor.3b127d10.js", "assets/vendor.bbddaa33.js"]
-    }
-  end
+  alias Vite.Manifest
+  alias Vite.Config
 
   def no_lf(s), do: String.replace(s, "\n", "")
   def no_indent(s), do: Regex.replace(~r/^\s+/m, s, "")
@@ -36,37 +10,28 @@ defmodule Vite.ViewTest do
 
   describe "for_entry/1" do
     test "generates the complete markup to include scripts (1)" do
-      e = entry(1)
+      Config.vite_manifest("test/fixtures/nested-imports.json")
+      e = Manifest.entry("src/main.tsx")
 
       assert View.for_entry(e) |> strip() ==
                ~S{
-          <link phx-track-static rel="stylesheet" href="/assets/main.c14674d5.css"/>
-          <script type="module" crossorigin defer phx-track-static src="/assets/main.9160cfe1.js"></script>
-          <link rel="modulepreload" href="/assets/vendor.3b127d10.js">
+                <link phx-track-static rel="stylesheet" href="/assets/main.aba08cbf.css"/>
+                <script type="module" crossorigin defer phx-track-static src="/assets/main.aef2b0ab.js"></script>
+                <link phx-track-static rel="stylesheet" href="/assets/dynamic-import-polyfill.0f681641.css"/>
+                <link rel="modulepreload" href="/assets/dynamic-import-polyfill.b75f6adf.js">
+                <link rel="modulepreload" href="/assets/vendor.2c7f0e08.js">
         } |> strip()
     end
 
-    test "generates the complete markup to include scripts (2)" do
-      e = entry(2)
+    test "generates the complete markup to include scripts - 2" do
+      Config.vite_manifest("test/fixtures/basic-2.0.0.json")
+      e = Manifest.entry("src/main.tsx")
 
       assert View.for_entry(e) |> strip() ==
                ~S{
-          <link phx-track-static rel="stylesheet" href="/assets/main.c14674d5.css"/>
-          <link phx-track-static rel="stylesheet" href="/assets/main.c33345b3.css"/>
-          <script type="module" crossorigin defer phx-track-static src="/assets/main.9160cfe1.js"></script>
-          <link rel="modulepreload" href="/assets/vendor.3b127d10.js">
-          <link rel="modulepreload" href="/assets/vendor.bbddaa33.js">
-        } |> strip()
-    end
-
-    test "generates the complete markup to include scripts (3)" do
-      e = entry(3)
-
-      assert View.for_entry(e) |> strip() ==
-               ~S{
-          <script type="module" crossorigin defer phx-track-static src="/assets/main.9160cfe1.js"></script>
-          <link rel="modulepreload" href="/assets/vendor.3b127d10.js">
-          <link rel="modulepreload" href="/assets/vendor.bbddaa33.js">
+                <link phx-track-static rel="stylesheet" href="/assets/main.c14674d5.css"/>
+                <script type="module" crossorigin defer phx-track-static src="/assets/main.9160cfe1.js"></script>
+                <link rel="modulepreload" href="/assets/vendor.3b127d10.js">
         } |> strip()
     end
   end
