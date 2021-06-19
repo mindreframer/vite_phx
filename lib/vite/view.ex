@@ -2,7 +2,7 @@ defmodule Vite.View do
   @moduledoc """
   Help with View integration into Phoenix views
   """
-  alias Vite.{Config, ManifestItem, ManifestReader}
+  alias Vite.{Config, ManifestReader}
 
   @doc """
   The snippet for `@vite/client` during development. Does nothing in :prod env.
@@ -75,7 +75,7 @@ defmodule Vite.View do
   @doc """
   Helper to get HTML for all entry points at once
   """
-  @spec for_entries(list(ManifestItem.t())) :: binary()
+  @spec for_entries(list(list)) :: binary()
   def for_entries(entries, prefix \\ "/") do
     entries |> Enum.map(&for_entry(&1, prefix)) |> Enum.join("\n")
   end

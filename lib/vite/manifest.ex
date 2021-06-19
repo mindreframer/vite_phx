@@ -9,7 +9,7 @@ defmodule Vite.Manifest do
     ManifestReader.read_vite()
   end
 
-  @spec entries() :: [Entry.t()]
+  @spec entries() :: [list()]
   def entries() do
     read()
     |> Enum.filter(&isEntry/1)
@@ -17,7 +17,7 @@ defmodule Vite.Manifest do
     |> Enum.map(fn entry -> convert_item([], entry) end)
   end
 
-  @spec entry(binary()) :: Entry.t()
+  @spec entry(binary()) :: list()
   def entry(entry_name) do
     Enum.find(entries(), &(Keyword.get(&1, :entry_name) == entry_name))
   end
