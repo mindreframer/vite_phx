@@ -1,4 +1,4 @@
-defmodule Vite.Manifest2 do
+defmodule Vite.Manifest do
   alias Vite.ManifestReader
   require Logger
 

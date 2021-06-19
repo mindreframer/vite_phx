@@ -47,13 +47,29 @@ defmodule Vite.View do
   <link rel="modulepreload" href="/assets/_vendor.7788aaa.js">
   `
   """
-  @spec for_entry(ManifestItem.t(), binary()) :: binary()
-  def for_entry(entry = %ManifestItem{}, prefix \\ "/") do
-    IO.inspect(entry, label: "ENTRY")
-    script = entry.file |> module_script(prefix)
-    imports = entry.imports |> Enum.map(&module_preload(&1, prefix)) |> Enum.join("\n")
-    css_files = entry.cssfiles |> Enum.map(&css_link(&1, prefix)) |> Enum.join("\n")
-    [css_files, script, imports] |> Enum.join("\n")
+  @spec for_entry(list(), binary()) :: binary()
+  def for_entry(entry, prefix \\ "/") do
+    entry |> Enum.map(fn file_tuple -> handle(file_tuple, prefix) end) |> Enum.join("\n")
+  end
+
+  defp handle({:css, file}, prefix) do
+    css_link(file, prefix)
+  end
+
+  defp handle({:import_css, file}, prefix) do
+    css_link(file, prefix)
+  end
+
+  defp handle({:module, file}, prefix) do
+    module_script(file, prefix)
+  end
+
+  defp handle({:import_module, file}, prefix) do
+    module_preload(file, prefix)
+  end
+
+  defp handle(_, _prefix) do
+    nil
   end
 
   @doc """
