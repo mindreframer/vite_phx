@@ -1,3 +1,7 @@
+# 0.3.1
+
+- Raise an error instead of logging when manifest file could not be found, thanks @joeppeeters! [PR 8](https://github.com/mindreframer/vite_phx/pull/8)
+
 # 0.3.0
 
 - Change entry format from Struct to a tuple list / Keyword

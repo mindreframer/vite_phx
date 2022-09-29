@@ -1,7 +1,7 @@
 defmodule Vite.MixProject do
   use Mix.Project
 
-  @version "0.3.0"
+  @version "0.3.1"
   @elixir_requirement "~> 1.9"
 
   def project do
