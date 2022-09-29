@@ -3,7 +3,19 @@ defmodule Vite.ManifestReader do
   Finds `manifest.json` in releases, keeps the content in-memory
   """
   alias Vite.{Cache, Config}
-  require Logger
+
+  defmodule ManifestNotFoundError do
+    defexception [:manifest_file]
+
+    @impl true
+    def message(e) do
+      """
+      Could not find static manifest at #{inspect(e.manifest_file)}.
+        Run "mix phx.digest" after building your static files
+        or remove the configuration from "config/prod.exs".
+      """
+    end
+  end
 
   def read_vite() do
     case Cache.get(:vite_manifest) do
@@ -23,11 +35,7 @@ defmodule Vite.ManifestReader do
     if File.exists?(full_vite_manifest) do
       full_vite_manifest |> File.read!() |> Config.json_library().decode!()
     else
-      Logger.error(
-        "Could not find static manifest at #{inspect(full_vite_manifest)}. " <>
-          "Run \"mix phx.digest\" after building your static files " <>
-          "or remove the configuration from \"config/prod.exs\"."
-      )
+      raise ManifestNotFoundError, manifest_file: full_vite_manifest
     end
   end
 
