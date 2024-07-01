@@ -1,0 +1,38 @@
+{
+  "_module_c-CEsvvVSb.js": {
+    "file": "assets/module_c-CEsvvVSb.js",
+    "name": "module_c",
+    "imports": [
+      "_module_a-UvMMXHBe.js",
+      "_module_b-BL0iFxLQ.js"
+    ]
+  },
+  "_module_a-UvMMXHBe.js": {
+    "file": "assets/module_a-UvMMXHBe.js",
+    "name": "module_a",
+    "imports": [
+      "_module_c-CEsvvVSb.js"
+    ]
+  },
+  "_module_b-BL0iFxLQ.js": {
+    "file": "assets/module_b-BL0iFxLQ.js",
+    "name": "module_b",
+    "imports": [
+      "_module_a-UvMMXHBe.js"
+    ]
+  },
+  "src/main.tsx": {
+    "file": "assets/main-Di0ERxQQ.js",
+    "name": "main",
+    "src": "src/main.tsx",
+    "isEntry": true,
+    "imports": [
+      "_module_a-UvMMXHBe.js",
+      "_module_b-BL0iFxLQ.js",
+      "_module_c-CEsvvVSb.js"
+    ],
+    "css": [
+      "assets/main-DuLJnGy9.css"
+    ]
+  }
+}

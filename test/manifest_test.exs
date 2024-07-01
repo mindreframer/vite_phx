@@ -36,5 +36,31 @@ defmodule Vite.ManifestTest do
                  {:import_module, "assets/vendor.2c7f0e08.js"}
                ]
     end
+
+    test "circular" do
+      Config.vite_manifest("test/fixtures/circular-imports.json")
+
+      assert Manifest.entries() ==
+               [
+                 [
+                   {:entry_name, "src/main.tsx"},
+                   {:css, "assets/main-DuLJnGy9.css"},
+                   {:module, "assets/main-Di0ERxQQ.js"},
+                   {:import_module, "assets/module_a-UvMMXHBe.js"},
+                   {:import_module, "assets/module_c-CEsvvVSb.js"},
+                   {:import_module, "assets/module_b-BL0iFxLQ.js"}
+                  ]
+               ]
+
+      assert Manifest.entry("src/main.tsx") ==
+        [
+          {:entry_name, "src/main.tsx"},
+          {:css, "assets/main-DuLJnGy9.css"},
+          {:module, "assets/main-Di0ERxQQ.js"},
+          {:import_module, "assets/module_a-UvMMXHBe.js"},
+          {:import_module, "assets/module_c-CEsvvVSb.js"},
+          {:import_module, "assets/module_b-BL0iFxLQ.js"}
+        ]
+    end
   end
 end
