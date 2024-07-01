@@ -48,10 +48,20 @@ defmodule Vite.Manifest do
   defp convert_item(acc, raw_data, :import) do
     css = Map.get(raw_data, "css", [])
     imports = Map.get(raw_data, "imports", [])
+    import_module = {:import_module, Map.get(raw_data, "file")}
+
     acc = acc ++ Enum.map(css, fn file -> {:import_css, file} end)
-    acc = acc ++ [{:import_module, Map.get(raw_data, "file")}]
-    acc = Enum.reduce(imports, acc, fn file, innerAcc -> handle_import(innerAcc, file) end)
-    acc |> Enum.uniq()
+
+    case Enum.member?(acc, import_module) do
+      true ->
+        acc
+
+      false ->
+        acc = acc ++ [import_module]
+
+        acc = Enum.reduce(imports, acc, fn file, innerAcc -> handle_import(innerAcc, file) end)
+        acc |> Enum.uniq()
+    end
   end
 
   @spec get_file(binary()) :: entry_value()
