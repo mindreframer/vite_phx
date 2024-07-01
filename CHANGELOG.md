@@ -1,3 +1,7 @@
+# 0.3.2
+
+- Handle circular references, thanks @weelink! [PR 10](https://github.com/mindreframer/vite_phx/pull/10)
+
 # 0.3.1
 
 - Raise an error instead of logging when manifest file could not be found, thanks @joeppeeters! [PR 8](https://github.com/mindreframer/vite_phx/pull/8)
