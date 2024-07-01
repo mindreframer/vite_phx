@@ -49,18 +49,18 @@ defmodule Vite.ManifestTest do
                    {:import_module, "assets/module_a-UvMMXHBe.js"},
                    {:import_module, "assets/module_c-CEsvvVSb.js"},
                    {:import_module, "assets/module_b-BL0iFxLQ.js"}
-                  ]
+                 ]
                ]
 
       assert Manifest.entry("src/main.tsx") ==
-        [
-          {:entry_name, "src/main.tsx"},
-          {:css, "assets/main-DuLJnGy9.css"},
-          {:module, "assets/main-Di0ERxQQ.js"},
-          {:import_module, "assets/module_a-UvMMXHBe.js"},
-          {:import_module, "assets/module_c-CEsvvVSb.js"},
-          {:import_module, "assets/module_b-BL0iFxLQ.js"}
-        ]
+               [
+                 {:entry_name, "src/main.tsx"},
+                 {:css, "assets/main-DuLJnGy9.css"},
+                 {:module, "assets/main-Di0ERxQQ.js"},
+                 {:import_module, "assets/module_a-UvMMXHBe.js"},
+                 {:import_module, "assets/module_c-CEsvvVSb.js"},
+                 {:import_module, "assets/module_b-BL0iFxLQ.js"}
+               ]
     end
   end
 end
